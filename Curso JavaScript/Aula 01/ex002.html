@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praticando</title>
+</head>
+<body>
+
+    <div >
+        <h1>Sistema de Multas</h1>
+        Veocidade do carro: <input type="number" id="velocidade">Km/h<br>
+        <input type ="button"value ="Verificar" onclick="calcular()">
+    </div>
+
+    <div id = "resultado">
+
+    </div>    
+<script>
+    function calcular(){
+        var n1 = window.document.getElementById("velocidade");
+        var vel = Number(n1.value);
+        var res = window.document.getElementById("resultado");
+        res.innerHTML = `Sua velocidade atual é de ${vel}<br>`;
+        if (vel > 60) {
+            res.innerHTML +=`Você está multado por ecesso de velocidade<br>`;
+        }
+    }
+</script>
+    
+</body>
+</html>

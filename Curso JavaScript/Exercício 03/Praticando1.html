@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova Prática Front end</title>
+</head>
+<body>
+
+    <header><h1>Prova Prática Front end</h1></header>
+
+    <section>
+        <div>
+            <input type="text" id="nome" placeholder="Nome">
+            <input type="number" id="preco" placeholder="Preço">
+            <input type="number" id="quantidade" placeholder="Quantidade">
+            <input type="button" value="Adicionar" onclick="adicionar()">
+            <input type="text" id="busca" placeholder="Buscar produto">
+            <input type="button" value="Buscar" onclick="buscarProduto()">
+            <input type="button" value="Mostrar Todos" onclick="mostrarProdutos()">
+        </div>
+
+
+        <ul id="lista" style="margin-top: 15px;"></ul>
+    </section>
+
+    <script>
+        let produtos = [
+            { nome: "Lápis", preco: 1.50, quantidade: 10 },
+            { nome: "Caderno", preco: 15.00, quantidade: 5 },
+            { nome: "Borracha", preco: 0.75, quantidade: 20 }
+        ];
+
+        function adicionar() {
+            let nome = document.getElementById("nome").value;
+            let preco = document.getElementById("preco").value;
+            let quantidade = document.getElementById("quantidade").value;
+
+            if (nome && preco && quantidade) {
+                produtos.push({
+                    nome: nome,
+                    preco: parseFloat(preco),
+                    quantidade: parseInt(quantidade)
+                });
+
+                mostrarProdutos();
+
+                document.getElementById("nome").value = "";
+                document.getElementById("preco").value = "";
+                document.getElementById("quantidade").value = "";
+            } else {
+                alert("Preencha todos os campos!");
+            }
+        }
+
+        function mostrarProdutos() {
+            let lista = document.getElementById("lista");
+            lista.innerHTML = "";
+
+            produtos.forEach((produto, index) => {
+                lista.innerHTML += `
+                    <li>${produto.nome} - R$ ${produto.preco.toFixed(2)} - Quantidade: ${produto.quantidade}
+                        <button onclick="removerProduto(${index})">Remover</button>
+                    </li>
+                `;
+            });
+        }
+
+        function removerProduto(index) {
+            produtos.splice(index, 1);
+            mostrarProdutos();
+        }
+
+        function buscarProduto() {
+            let termo = document.getElementById("busca").value.toLowerCase();
+            let lista = document.getElementById("lista");
+            lista.innerHTML = "";
+
+            produtos.forEach((produto, index) => {
+                if (produto.nome.toLowerCase().includes(termo)) {
+                    lista.innerHTML += `
+                        <li>${produto.nome} - R$ ${produto.preco.toFixed(2)} - Quantidade: ${produto.quantidade}
+                            <button onclick="removerProduto(${index})">Remover</button>
+                        </li>
+                    `;
+                }
+            });
+        }
+
+        // Mostrar produtos iniciais ao carregar a página
+        mostrarProdutos();
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praticando o exercício da Prova</title>
+
+    <style>
+         /* Estilos para a página */
+         body {
+            background-color: blue; /* Cor de fundo azul */
+            transition: background-color 0.5s ease; /* Transição suave para a mudança de cor */
+        }
+
+        header {
+            color: white; /* Cor do texto no header */
+            text-align: center; /* Centraliza o texto */
+        }
+        section {
+            background-color: white; /* Cor de fundo da seção */
+            border-radius: 10px; /* Bordas arredondadas */
+            padding: 15px; /* Espaçamento interno */
+            width: 500px; /* Largura da seção */
+            margin: auto; /* Centraliza a seção na tela */
+            box-shadow: 5px 5px 10px black; /* Sombra para dar profundidade */
+            text-align: center; /* Alinha o texto no centro */
+        }
+        footer {
+            color: white; /* Cor do texto no rodapé */
+            text-align: center; /* Alinha o texto no centro */
+            font-style: italic; /* Estilo de fonte itálico */
+        }
+    </style>
+</head>
+<body>
+    <header><h1>Praticando listas</h1></header> <!-- Título da página -->
+
+    <section>
+        <div>
+            <!-- Campos de entrada para o nome, preço e quantidade do produto -->
+            <input type="text" id="Nome" placeholder="Nome do Produto">
+            <input type="number" id="Preço" placeholder="Preço">
+            <input type="number" id="quantidade" placeholder="Quantidade Do Produto">
+            <!-- Botão para adicionar o produto -->
+            <button onclick="adicionar()">Adicionar</button>
+            <br><br>
+            
+            <!-- Campo de busca para procurar o nome do produto -->
+            <input type="text" id="search" placeholder="Buscar Produto" oninput="buscar()">
+            <br><br>
+            
+            <!-- Lista que exibe os produtos -->
+            <select id="lista" size="6" style="width: 300px;"></select>
+            <br><br>
+            <!-- Botão para remover o produto selecionado -->
+            <button onclick="remover()">Remover Selecionado</button>
+            <br><br>
+            <!-- Botão para finalizar e mostrar os resultados -->
+            <button onclick="finalizar()">Finalizar</button>
+        </div>
+
+        <!-- Exibição dos resultados após finalizar -->
+        <div id="res"></div>
+    </section>
+
+    <script>
+        let produtos = []; // Array para armazenar os produtos cadastrados
+
+        // Função para adicionar um produto à lista
+        function adicionar() {
+            let nome = document.getElementById("Nome").value; // Obtém o nome do produto
+            let preco = document.getElementById("Preço").value; // Obtém o preço do produto
+            let quantidade = document.getElementById("quantidade").value; // Obtém a quantidade do produto
+            let lista = document.getElementById("lista"); // Obtém a lista de produtos para exibição
+
+            // Verifica se todos os campos estão preenchidos corretamente
+            if (nome !== "" && Number(preco) > 0 && Number(quantidade) != 0) {
+                let produto = { nome: nome, preco: preco, quantidade: quantidade }; // Cria um objeto produto
+                produtos.push(produto); // Adiciona o produto no array de produtos
+
+                // Cria um item de lista (option) para o produto
+                let item = document.createElement("option");
+                item.text = `Produto: ${nome}, Preço: R$${Number(preco).toFixed(2)}, Quantidade: ${quantidade}`;
+                lista.appendChild(item); // Adiciona o item na lista
+
+                // Limpa os campos de entrada após adicionar o produto
+                document.getElementById("Nome").value = "";
+                document.getElementById("Preço").value = "";
+                document.getElementById("quantidade").value = "";
+                document.getElementById("Nome").focus(); // Foca no campo "Nome"
+            } else {
+                alert("Preencha corretamente o Nome e o Preço!"); // Alerta caso algum campo esteja errado
+            }
+        }
+
+        // Função para buscar um produto na lista
+        function buscar() {
+            let searchTerm = document.getElementById("search").value.toLowerCase(); // Obtém o termo de busca
+            let lista = document.getElementById("lista"); // Obtém a lista de produtos
+            let options = lista.getElementsByTagName("option"); // Obtém todos os itens da lista
+
+            // Mostra todos os itens e oculta os que não correspondem ao termo de busca
+            Array.from(options).forEach(option => {
+                if (option.text.toLowerCase().includes(searchTerm)) {
+                    option.style.display = 'block'; // Exibe o item que corresponde à busca
+                } else {
+                    option.style.display = 'none'; // Oculta o item que não corresponde à busca
+                }
+            });
+        }
+
+        // Função para remover um item da lista
+        function remover() {
+            let lista = document.getElementById("lista"); // Obtém a lista de produtos
+            let selectedItem = lista.options[lista.selectedIndex]; // Obtém o item selecionado da lista
+
+            // Verifica se algum item foi selecionado
+            if (selectedItem) {
+                // Remove o item do array de produtos e da lista HTML
+                let nomeProduto = selectedItem.text.split(',')[0].split(':')[1].trim(); // Extrai o nome do produto
+                produtos = produtos.filter(p => p.nome !== nomeProduto); // Filtra os produtos
+                selectedItem.remove(); // Remove o item da interface gráfica
+            }
+        }
+
+        // Função para calcular os totais e exibir os resultados
+        function finalizar() {
+            let res = document.getElementById("res"); // Obtém o elemento de resultados
+            if (produtos.length === 0) {
+                res.innerHTML = "<p>Nenhum produto cadastrado.</p>"; // Exibe mensagem caso não haja produtos
+                return;
+            }
+
+            let totalProdutos = produtos.length; // Total de tipos de produtos cadastrados
+
+            // Soma as quantidades de todos os produtos
+            let totalItens = produtos.reduce((acc, p) => acc + Number(p.quantidade), 0);
+
+            // Soma o valor total (preço * quantidade) de todos os produtos
+            let valorTotal = produtos.reduce((acc, p) => acc + (Number(p.preco) * Number(p.quantidade)), 0);
+
+            // Calcula a média de preço por item
+            let media = valorTotal / totalItens;
+
+            // Exibe os resultados no HTML
+            res.innerHTML = `
+                <p>Total de tipos de produtos: ${totalProdutos}</p>
+                <p>Total de itens: ${totalItens}</p>
+                <p>Valor total: R$${valorTotal.toFixed(2)}</p>
+                <p>Média de preço por item: R$${media.toFixed(2)}</p>`;
+        }
+    </script>
+
+    <footer>&copy; Praticando</footer>
+</body>
+</html>

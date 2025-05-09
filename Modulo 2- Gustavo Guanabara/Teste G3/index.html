@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>G3 Engenharia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f4f6f8;
+      --text: #1a1a1a;
+      --accent: #0057d8;
+      --accent-hover: #003fa1;
+      --border: #e0e0e0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Urbanist', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--bg);
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+    .logo img {
+      height: 80px;
+      margin-right: 10px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .menu-toggle span {
+      height: 3px;
+      background: var(--text);
+      margin: 4px 0;
+      width: 24px;
+    }
+    .hero {
+      padding: 60px 20px;
+      text-align: center;
+      background: var(--bg-soft);
+    }
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+    }
+    .hero p {
+      max-width: 600px;
+      margin: 15px auto 0;
+      font-size: 1.1rem;
+    }
+    section {
+      padding: 60px 20px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 30px;
+    }
+    .card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: box-shadow 0.3s;
+    }
+    .card:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    form {
+      max-width: 400px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    input, textarea {
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    button {
+      background: var(--accent);
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: var(--accent-hover);
+    }
+    footer {
+      background: var(--bg-soft);
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      color: #666;
+    }
+    .testimonials {
+      background: var(--bg);
+      text-align: center;
+    }
+    .testimonial {
+      background: var(--bg-soft);
+      padding: 30px;
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 600px;
+    }
+    .testimonial p {
+      font-style: italic;
+      color: #444;
+    }
+    .testimonial h4 {
+      margin-top: 15px;
+      font-weight: 600;
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        background: var(--bg);
+        width: 100%;
+        padding: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      }
+      nav ul.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="Logo.png" alt="G3 Logo">
+    </div>
+    <div class="menu-toggle" id="menu-toggle">
+      <span></span><span></span><span></span>
+    </div>
+    <nav>
+      <ul id="nav-links">
+        <li><a href="#empresa">Empresa</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#projetos">Projetos</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="empresa" class="hero">
+    <h1>Construímos com inovação e confiança</h1>
+    <p>Somos especialistas em engenharia civil, com foco em excelência, sustentabilidade e resultado.</p>
+  </section>
+
+  <section id="servicos">
+    <h2 style="text-align:center;">Nossos Serviços</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="Logo.png" alt="Infraestrutura">
+        <h3>Infraestrutura</h3>
+        <p>Soluções para obras públicas e privadas com segurança e tecnologia.</p>
+      </div>
+      <div class="card">
+        <img src="Logo.png" alt="Loteamentos">
+        <h3>Loteamentos</h3>
+        <p>Na G3 Engenharia, transformamos projetos em realidade com soluções completas em infraestrutura.</p>
+      </div>
+      <div class="card">
+        <img src="Logo.png" alt="Obras Civis">
+        <h3>Obras Civis</h3>
+        <p>Edificações com qualidade técnica e estética superior.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <h2 style="text-align:center;">Projetos em Destaque</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="pexels-kuma-jio-2150949207-31416332.jpg" alt="Projeto 1">
+        <h3>Complexo Residencial Delta</h3>
+        <p>Residencial moderno com infraestrutura completa e acessível.</p>
+      </div>
+      <div class="card">
+        <img src="pexels-kuma-jio-2150949207-31416332.jpg" alt="Projeto 2">
+        <h3>Centro de Inovação Urbana</h3>
+        <p>Espaço sustentável para desenvolvimento tecnológico e coworking.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="depoimentos" class="testimonials">
+    <h2>Depoimentos</h2>
+    <div class="testimonial">
+      <p>“A G3 Engenharia superou nossas expectativas em todos os aspectos do projeto. Entrega no prazo, qualidade impecável e excelente comunicação.”</p>
+      <h4>Maria Silva, CEO da Construtech</h4>
+    </div>
+    <div class="testimonial">
+      <p>“Profissionais extremamente qualificados e comprometidos. Contrataremos novamente sem dúvidas.”</p>
+      <h4>João Oliveira, Diretor da Urbaniza</h4>
+    </div>
+  </section>
+
+  <section id="contato">
+    <h2 style="text-align:center;">Fale Conosco</h2>
+    <form>
+      <input type="text" placeholder="Nome" required />
+      <input type="email" placeholder="E-mail" required />
+      <textarea placeholder="Mensagem" rows="5" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 G3 Engenharia. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    $(document).ready(function () {
+      $('#menu-toggle').click(function () {
+        $('#nav-links').toggleClass('show');
+      });
+    });
+  </script>
+</body>
+</html>

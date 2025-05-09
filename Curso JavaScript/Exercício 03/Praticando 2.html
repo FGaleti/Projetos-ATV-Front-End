@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lista de Produtos</title>
+    <style>
+      body {
+        font-family: Arial;
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+      input {
+        margin-right: 10px;
+        padding: 5px;
+      }
+      button {
+        padding: 6px 10px;
+        margin-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Gerenciador de Produtos</h2>
+
+    <!-- Campos de entrada -->
+    <input type="text" id="nomeProduto" placeholder="Nome do produto" />
+    <input type="number" id="precoProduto" placeholder="Preço" />
+    <button id="btnAdicionar" onclick="addProdutos()">Adicionar</button>
+
+    <br /><br />
+
+    <!-- Campo de pesquisa -->
+    <input type="text" id="pesquisar" placeholder="Pesquisar produto" />
+    <button onclick="pesquisa()">Pesquisar</button>
+
+    <!-- Tabela -->
+    <table>
+      <thead>
+        <tr>
+          <th>Produto</th>
+          <th>Preço</th>
+          <th>Id Item</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaProdutos">
+        <!-- Produtos vão aparecer aqui -->
+      </tbody>
+    </table>
+
+    <script>
+      const produtos = [
+        { nome: "Camiseta", preco: 49.99 },
+        { nome: "Tênis", preco: 199.9 },
+        { nome: "Boné", preco: 29.9 },
+      ];
+
+      function exibirTabela() {
+        const tabela = document.getElementById("tabelaProdutos");
+        tabela.innerHTML = "";
+
+        produtos.forEach(function (item, index) {
+          let linha = `<tr>
+          <td>${item.nome}</td>
+          <td>R$ ${item.preco}</td>
+          <td>${index}</td>
+          <td><button onclick="ExcluirProduto(${index})">Excluir</button></td>
+        </tr>`;
+          tabela.innerHTML += linha;
+        });
+      }
+
+      function ExcluirProduto(index) {
+        produtos.splice(index, 1);
+        exibirTabela();
+      }
+
+      function addProdutos() {
+        let nome = document.getElementById("nomeProduto").value;
+        let preco = document.getElementById("precoProduto").value;
+
+        produtos.push({ nome, preco });
+        exibirTabela();
+      }
+
+      function pesquisa() {
+        const tabela = document.getElementById("tabelaProdutos");
+        const pesquisado = document.getElementById("pesquisar").value.toLowerCase();
+        tabela.innerHTML = ""; 
+
+        let encontrado = false;
+
+        for (let i = 0; i < produtos.length; i++) {
+          if (produtos[i].nome.toLowerCase() === pesquisado) { 
+            let linha = `
+            <h1>Item encontrado e sendo exibido abaixo</h1>
+            <tr>
+              <td>${produtos[i].nome}</td>
+              <td>R$ ${produtos[i].preco}</td>
+              <td>${i}</td>
+              <td><button onclick="ExcluirProduto(${i})">Excluir</button></td>
+            </tr>`;
+            tabela.innerHTML += linha;
+            encontrado = true; 
+            break; 
+          }
+        }
+
+        if (!encontrado) {
+          tabela.innerHTML = "<tr><td colspan='4'>Item não encontrado</td></tr>";        }
+      }
+
+      exibirTabela();
+    </script>
+  </body>
+</html>

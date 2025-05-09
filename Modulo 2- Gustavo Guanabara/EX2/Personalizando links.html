@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pr-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+     <!--
+        # = id
+        . = class
+        :: = pseudo elemento 
+        > = children
+     -->   
+
+    <style>
+        a {
+            color: green;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:visited {
+            color: blue;
+        }
+
+        a:hover {
+            color: black;
+            text-decoration: underline;
+        }
+
+        a::after{
+            content: '[link]';
+            text-decoration: none;
+            font-weight: normal;
+            color: darkgrey;
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+    <h1>links</h1>
+    <ul>
+        <a href="https://github.com/">
+            <li>Git</li>
+        </a>
+        <a href="https://www.cursoemvideo.com/">
+            <li>CursoEmVideo</li>
+        </a>
+    </ul>
+
+</body>
+
+</html>

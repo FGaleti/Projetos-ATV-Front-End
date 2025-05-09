@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praticando</title>
+
+    <style>
+        body {
+            background-color: blue;
+            transition: background-color 0.5s ease;
+        }
+
+        header {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            width: 500px;
+            margin: auto;
+            box-shadow: 5px 5px 10px black;
+            text-align: center;
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            font-style: italic;
+        }
+
+        img {
+            width: 300px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body onload="carregar()">
+
+    <header><h1>Hora do Dia</h1></header>
+
+    <section>
+        <div id="msg">
+            Aqui vai aparecer a mensagem...
+        </div>
+
+        <div id="foto">
+            <img id="imagem" src="manha.png" alt="foto do dia">
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy;Curso Em Vídeo</p>
+    </footer>
+
+    <script>
+        function carregar() {
+            var msg = window.document.getElementById("msg");
+            var img = window.document.getElementById("imagem");
+            var data = new Date();
+            var hora = data.getHours();
+            msg.innerHTML = `Agora são ${hora} horas.`;
+
+            if (hora >= 0 && hora < 12) {
+                img.src = "manha.png";
+                document.body.style.background = "#e2cd9f";
+            } else if (hora >= 12 && hora < 18) {
+                img.src = "tarde.png";
+                document.body.style.background = "#b9846f";
+            } else {
+                img.src = "noite.png";
+                document.body.style.background = "#515154";
+            }
+        }
+    </script>
+</body>
+</html>

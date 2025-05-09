@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula de JavaScript 001</title>
+
+    <style>
+        div#area{
+            background-color: aquamarine;
+            color: white;
+            width: 200px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body>
+    <div id ="mensagem">
+        <h1>Aprendendo JavaScript</h1>
+        <p>Esse é o primeiro exemplo de JavaScript.</p>
+        <p>Esse é o segundo exemplo de JavaScript.</p>
+        <p>Esse é o terceiro exemplo de JavaScript.</p>
+        <p>Esse é o quarto exemplo de JavaScript.</p>
+    </div>
+        
+
+    <div id ='area' onclick="clicar()">
+        Interaja
+    </div>
+
+    <input type="number" name = 'txtn1' id = 'txtn1'>
+    <input type="number" name = 'txtn2' id = 'txtn2'>
+    <input type="button" value="somar" onclick="somar()">
+    
+    <div id="res">Resultado</div>
+
+    <script>
+      /*  var nome = window.prompt("Qual é o seu nome?");
+        window.alert("Olá " + nome + ", tudo bem?");*/
+
+        var n1= window.prompt("Digite um número:");
+        var n2= window.prompt("Digite outro número:");
+        var soma = Number(n1) + Number(n2);
+
+        //${soma} é uma forma de interpolação de string, mas não funciona com números
+        window.alert("A soma entre " + n1 + " e " + n2 + " é igual a " + soma); 
+    
+        //toUpperCase() transforma a string em maiúscula
+        //toLowerCase() transforma a string em minúscula
+        //length conta quantas letras tem a string
+     /*   var pessoa= window.prompt("Qual é o seu nome?");
+        documentent.write("Seu nome tem ${pessoas.lenght} letras.<br>");
+        document.write("Seu nome em maiúsculas é <br>" + pessoa.toUpperCase());
+        document.write("<br>Seu nome em minúsculas é <br>" + pessoa.toLowerCase());*/
+        //indexOf() retorna a posição da letra que você quer procurar na string
+        //replace() substitui a letra que você quer por outra letra
+        //slice() corta a string de acordo com os parâmetros que você passar
+
+        //Entendo o DOM
+        //Document Object Model 
+        
+        var p1 = window.document.getElementsByTagName('p')[0];
+        window.document.write(p1.innerText);
+
+    /*  var p = window.document.getElementById('mensagem');
+        p.style.background = 'yellow';  */
+    /*  var p = window.document.querySelector('p#mensagem');
+        p.style.background = 'yellow';  */
+        //Essas são as formas de selecionar um elemento no DOM
+        //getElementsByTagName() seleciona todos os elementos com a tag que você passar
+        //getElementById() seleciona o elemento com o id que você passar
+        //querySelector() seleciona o elemento com a tag, id ou classe que você passar
+        //querySelectorAll() seleciona todos os elementos com a tag, id ou classe que você passar
+        //innerText pega o texto que está dentro do elemento
+        //innerHTML pega o HTML que está dentro do elemento
+
+        //ENVENTOS DOM
+        //onclick() é o evento que acontece quando você clica no elemento
+        //onmouseover() é o evento que acontece quando você passa o mouse em cima do elemento
+        //onmouseout() é o evento que acontece quando você tira o mouse de cima do elemento
+        //onkeydown() é o evento que acontece quando você aperta uma tecla
+        //onkeyup() é o evento que acontece quando você solta uma tecla
+
+        //Funcões de eventos são funções que são executadas quando o evento acontece
+
+        function clicar(){
+            var a = window.document.getElementById('area');
+            a.innerText = 'Clicou!';
+        }
+
+        function somar(){
+            var tn1 = window.document.getElementById('txtn1');
+            var tn2 = window.document.getElementById('txtn2');
+            var res = window.document.getElementById('res');
+            var n1 = Number(tn1.value); 
+            var n2 = Number(tn2.value);
+            var s = n1+n2;
+            res.innerHTML =`A soma é ${s}`;
+        }
+
+
+
+        
+    </script>
+</body>
+</html>

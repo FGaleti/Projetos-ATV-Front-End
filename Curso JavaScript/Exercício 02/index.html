@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Produtos</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    input, button { margin: 5px; padding: 5px; }
+    table, th, td { border: 1px solid #000; border-collapse: collapse; padding: 5px; }
+  </style>
+</head>
+<body>
+
+  <h2>Produtos</h2>
+
+  <input id="nome" placeholder="Nome" />
+  <input id="preco" type="number" placeholder="Preço" />
+  <input id="estoque" type="number" placeholder="Estoque" />
+  <button onclick="adicionar()">Adicionar</button>
+
+  <br><br>
+
+  <input id="busca" placeholder="Buscar" oninput="buscar()" />
+
+  <table>
+    <thead>
+      <tr><th>Nome</th><th>Preço</th><th>Estoque</th><th>Ação</th></tr>
+    </thead>
+    <tbody id="lista"></tbody>
+  </table>
+
+  <script>
+    let produtos = JSON.parse(localStorage.getItem('produtos')) || [];
+
+    function salvar() {
+      localStorage.setItem('produtos', JSON.stringify(produtos));
+    }
+
+    function render(lista = produtos) {
+      const tabela = document.getElementById('lista');
+      tabela.innerHTML = '';
+      lista.forEach((p, i) => {
+        tabela.innerHTML += `
+          <tr>
+            <td>${p.nome}</td>
+            <td>R$ ${p.preco}</td>
+            <td>${  p.estoque}</td>
+            <td><button onclick="remover(${i})">Excluir</button></td>
+          </tr>`;
+      });
+    }
+
+    function adicionar() {
+      const nome = document.getElementById('nome').value;
+      const preco = document.getElementById('preco').value;
+      const estoque = document.getElementById('estoque').value;
+      if (!nome || preco < 0 || estoque < 0) return alert("Preencha corretamente.");
+      produtos.push({ nome, preco, estoque });
+      salvar();
+      render();
+      document.getElementById('nome').value = '';
+      document.getElementById('preco').value = '';
+      document.getElementById('estoque').value = '';
+    }
+
+    function remover(index) {
+      produtos.splice(index, 1);
+      salvar();
+      render();
+    }
+
+    function buscar() {
+      const termo = document.getElementById('busca').value.toLowerCase();
+      const filtrados = produtos.filter(p => p.nome.toLowerCase().includes(termo));
+      render(filtrados);
+    }
+
+    render();
+  </script>
+
+</body>
+</html>

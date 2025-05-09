@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Nome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        class Pessoa {
+            constructor() {
+                this.nomes = [];
+            }
+
+            adicionarNome(nome) {
+                this.nomes.push(nome);
+                console.log(this.nomes);
+            }
+        }
+
+        const pessoa = new Pessoa();
+
+        function adicionarNome() {
+            const input = document.getElementById("nomeInput");
+            const nome = input.value.trim();
+            if (nome) {
+                pessoa.adicionarNome(nome);
+                input.value = ""; 
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="nomeInput" placeholder="Digite um nome">
+    <button onclick="adicionarNome()">Adicionar Nome</button>
+</body>
+</html>

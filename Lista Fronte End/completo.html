@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercícios HTML, CSS e JavaScript</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+        }
+
+        h1 {
+            color: blue;
+            font-size: 32px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        h3 {
+            font-size: 18px;
+        }
+
+        .vermelho {
+            color: red;
+        }
+
+        .bloco {
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        .negrito {
+            font-weight: bold;
+        }
+
+        .com-padding {
+            padding: 20px;
+            background-color: #ddd;
+        }
+
+        .com-margem {
+            margin: 30px;
+            background-color: #eee;
+        }
+
+        .botao-arredondado {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid black;
+            padding: 8px;
+        }
+
+        body.dark {
+            background-color: black;
+            color: white;
+        }
+
+        #caixa {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Exercícios HTML</h1>
+
+    <h2>1. Lista de Compras</h2>
+    <ul>
+        <li>Arroz</li>
+        <li>Feijão</li>
+        <li>Leite</li>
+        <li>Pão</li>
+    </ul>
+
+    <h2>2. Lista Ordenada e Não Ordenada</h2>
+    <ol>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ol>
+    <ul>
+        <li>Item A</li>
+        <li>Item B</li>
+        <li>Item C</li>
+    </ul>
+
+    <h2>3. Tabela de Horários</h2>
+    <table>
+        <tr><th>Segunda</th><th>Terça</th><th>Quarta</th></tr>
+        <tr><td>Matemática</td><td>História</td><td>Inglês</td></tr>
+        <tr><td>Português</td><td>Química</td><td>Física</td></tr>
+        <tr><td>Geografia</td><td>Biologia</td><td>Ed. Física</td></tr>
+        <tr><td>Artes</td><td>Redação</td><td>Filosofia</td></tr>
+        <tr><td>Sociologia</td><td>Inglês</td><td>Matemática</td></tr>
+    </table>
+
+    <h2>4. Tabela de Produtos</h2>
+    <table>
+        <tr><th>Produto</th><th>Preço</th><th>Quantidade</th></tr>
+        <tr><td>Notebook</td><td>R$ 2500</td><td>10</td></tr>
+        <tr><td>Mouse</td><td>R$ 50</td><td>30</td></tr>
+        <tr><td>Teclado</td><td>R$ 100</td><td>20</td></tr>
+    </table>
+
+    <h2>5-10. Formulários e Links</h2>
+    <form>
+        Nome: <input type="text" name="nome"><br>
+        E-mail: <input type="email" name="email"><br>
+        Mensagem: <textarea name="mensagem"></textarea><br>
+    </form>
+
+    <form>
+        Nome: <input type="text"><br>
+        <input type="submit" value="Enviar">
+    </form>
+
+    <form>
+        Senha: <input type="password" name="senha">
+    </form>
+
+    <form>
+        País:
+        <select name="pais">
+            <option>Brasil</option>
+            <option>Argentina</option>
+            <option>Portugal</option>
+        </select>
+    </form>
+
+    <form>
+        <input type="radio" name="sexo" value="masculino"> Masculino<br>
+        <input type="radio" name="sexo" value="feminino"> Feminino<br>
+        <input type="radio" name="sexo" value="outro"> Outro
+    </form>
+
+    <button onclick="window.location.href='https://www.google.com/search?q=tibia,+melhor+jogo+do+mundo'">Abrir Link</button>
+
+    <h2>11-14. Imagens e Títulos</h2>
+    <a href="https://www.google.com" target="_blank">Abrir Google</a>
+
+    <img src="imagem.jpg" alt="Descrição da imagem">
+    <a href="https://www.exemplo.com">
+        <img src="imagem.jpg" alt="Clique aqui">
+    </a>
+
+    <h1>Meu Título</h1>
+    <p>Este é um parágrafo.</p>
+    <img src="imagem.jpg" alt="Imagem Exemplo">
+
+    <h1>Exercícios de CSS</h1>
+    <p class="vermelho">Este parágrafo está com texto vermelho.</p>
+    <div class="bloco">Este é um bloco com borda preta de 2px.</div>
+    <h2>Título H2 com tamanho diferente</h2>
+    <h3>Título H3 com outro tamanho</h3>
+    <p class="negrito">Este texto está em negrito.</p>
+    <div class="com-padding">Este bloco tem padding de 20px.</div>
+    <p class="com-margem">Este parágrafo tem margem de 30px.</p>
+    <button class="botao-arredondado">Botão com cantos arredondados</button>
+
+    <h1>Exercícios JavaScript 51 a 60</h1>
+
+    <h2>Ex. 53: Botão com Alerta</h2>
+    <button onclick="alert('Botão clicado!')">Clique aqui</button>
+
+    <h2>Ex. 54: Alterar Texto</h2>
+    <p id="texto">Texto original</p>
+    <button onclick="document.getElementById('texto').innerText = 'Texto alterado!'">Alterar</button>
+
+    <h2>Ex. 55: Mudar Cor da Caixa</h2>
+    <div id="caixa"></div>
+    <button onclick="document.getElementById('caixa').style.backgroundColor = 'lightgreen'">Mudar Cor</button>
+
+    <h2>Ex. 56: Mostrar Nome</h2>
+    <input id="nomeInput" placeholder="Digite seu nome">
+    <button onclick="document.getElementById('saida').innerText = nomeInput.value">Enviar</button>
+    <p id="saida"></p>
+
+    <h2>Ex. 57: Contador</h2>
+    <p>Clique: <span id="contador">0</span></p>
+    <button onclick="document.getElementById('contador').innerText++">Clique aqui</button>
+
+    <h2>Ex. 58: Mostrar/Esconder</h2>
+    <p id="textoEscondido">Este é um texto secreto.</p>
+    <button onclick="textoEscondido.style.display = textoEscondido.style.display === 'none' ? 'block' : 'none'">Mostrar/Esconder</button>
+
+    <h2>Ex. 59: Trocar Imagem</h2>
+    <img id="imgTroca" src="https://via.placeholder.com/200x150?text=Normal"
+         onmouseover="this.src='https://via.placeholder.com/200x150?text=Hover'"
+         onmouseout="this.src='https://via.placeholder.com/200x150?text=Normal'">
+
+    <h2>Ex. 60: Modo Escuro</h2>
+    <button onclick="document.body.classList.toggle('dark')">Mudar Tema</button>
+
+    <script>
+        // Aqui vai do 24 ao 60, incluindo os que você já tinha.
+        // Já está tudo certinho no seu código acima, mas se quiser posso comentar linha por linha.
+
+        // Exercícios de JavaScript 51 e 52:
+        function saudacao(nome) {
+            return "Olá, " + nome + "!";
+        }
+        console.log(saudacao("Maria"));
+
+        function mediaNumeros(arr) {
+            let soma = 0;
+            for (let num of arr) {
+                soma += num;
+            }
+            return soma / arr.length;
+        }
+        console.log(mediaNumeros([10, 8, 9]));
+    </script>
+</body>
+</html>

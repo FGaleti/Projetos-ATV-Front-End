@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercícios HTML</title>
+</head>
+<body>
+    <h1>Exercícios HTML</h1>
+
+    <h2>1. Lista de Compras</h2>
+    <ul>
+      <li>Arroz</li>
+      <li>Feijão</li>
+      <li>Leite</li>
+      <li>Pão</li>
+    </ul>
+
+    <h2>2. Lista Ordenada e Não Ordenada</h2>
+    <ol>
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ol>
+    <ul>
+      <li>Item A</li>
+      <li>Item B</li>
+      <li>Item C</li>
+    </ul>
+
+    <h2>3. Tabela de Horários</h2>
+    <table>
+      <tr><th>Segunda</th><th>Terça</th><th>Quarta</th></tr>
+      <tr><td>Matemática</td><td>História</td><td>Inglês</td></tr>
+      <tr><td>Português</td><td>Química</td><td>Física</td></tr>
+      <tr><td>Geografia</td><td>Biologia</td><td>Ed. Física</td></tr>
+      <tr><td>Artes</td><td>Redação</td><td>Filosofia</td></tr>
+      <tr><td>Sociologia</td><td>Inglês</td><td>Matemática</td></tr>
+    </table>
+
+    <h2>4. Tabela de Produtos</h2>
+      <table >
+        <tr><th>Produto</th><th>Preço</th><th>Quantidade</th></tr>
+        <tr><td>Notebook</td><td>R$ 2500</td><td>10</td></tr>
+        <tr><td>Mouse</td><td>R$ 50</td><td>30</td></tr>
+        <tr><td>Teclado</td><td>R$ 100</td><td>20</td></tr>
+      </table>
+
+    <h2>5. Formulário Simples</h2>
+    <form>
+      Nome: <input type="text" name="nome"><br>
+      E-mail: <input type="email" name="email"><br>
+      Mensagem: <textarea name="mensagem"></textarea><br>
+    </form>
+
+    <h2>6. Formulário com Botão de Envio</h2>
+    <form>
+      Nome: <input type="text"><br>
+      <input type="submit" value="Enviar">
+    </form>
+
+    <h2>7. Campo de Senha</h2>
+    <form>
+      Senha: <input type="password" name="senha">
+    </form>
+
+    <h2>8. Campo de Seleção (Select)</h2>
+    <form>
+      País:
+      <select name="pais">
+        <option>Brasil</option>
+        <option>Argentina</option>
+        <option>Portugal</option>
+      </select>
+    </form>
+
+    <h2>9. Radio Button</h2>
+    <form>
+      <input type="radio" name="sexo" value="masculino"> Masculino<br>
+      <input type="radio" name="sexo" value="feminino"> Feminino<br>
+      <input type="radio" name="sexo" value="outro"> Outro
+    </form>
+
+    <h2>10. Botão com Link</h2>
+    <button onclick="window.location.href='https:www.google.com/search?q=tibia%2C+melhor+jogo+do+mundo'">Abrir Link</button>
+    
+
+    <h2>11. Link que Abre em Nova Aba</h2>
+    <a href="https://www.google.com" target="_blank">Abrir Google</a>
+
+    <h2>12. Imagem</h2>
+    <img src="imagem.jpg" alt="Descrição da imagem">
+
+    <h2>13. Imagem Clicável</h2>
+    <a href="https://www.exemplo.com">
+      <img src="imagem.jpg" alt="Clique aqui">
+    </a>
+
+    <h2>14. Página HTML Simples</h2>
+    <h1>Meu Título</h1>
+    <p>Este é um parágrafo.</p>
+    <img src="imagem.jpg" alt="Imagem Exemplo">
+
+    
+    <title>Exercícios de CSS</title>
+  <style>
+
+/* 15. Cor de fundo */
+    body {
+      background-color: #f0f8ff;
+    }
+
+    /* 16. Cor dos títulos h1 */
+    h1 {
+      color: blue;
+    }
+
+    /* 17. Classe para parágrafo em vermelho */
+    .vermelho {
+      color: red;
+    }
+
+    /* 18. Borda com cor e espessura */
+    .bloco {
+      border: 2px solid black;
+      padding: 10px;
+    }
+
+    /* 19. Tamanhos diferentes para títulos */
+    h1 {
+      font-size: 32px;
+    }
+    h2 {
+      font-size: 24px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+
+    /* 20. Peso da fonte */
+    .negrito {
+      font-weight: bold;
+    }
+
+    /* 21. Espaçamento interno (padding) */
+    .com-padding {
+      padding: 20px;
+      background-color: #ddd;
+    }
+
+    /* 22. Margem (margin) */
+    .com-margem {
+      margin: 30px;
+      background-color: #eee;
+    }
+
+    /* 23. Raio de borda */
+    .botao-arredondado {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    table {
+      border:"1 px solid black";
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Exercícios de CSS</h1>
+
+  <p class="vermelho">Este parágrafo está com texto vermelho.</p>
+
+  <div class="bloco">Este é um bloco com borda preta de 2px.</div>
+
+  <h2>Título H2 com tamanho diferente</h2>
+  <h3>Título H3 com outro tamanho</h3>
+
+  <p class="negrito">Este texto está em negrito.</p>
+
+  <div class="com-padding">Este bloco tem padding de 20px.</div>
+
+  <p class="com-margem">Este parágrafo tem margem de 30px.</p>
+
+  <button class="botao-arredondado">Botão com cantos arredondados</button>
+</body>
+</html>
